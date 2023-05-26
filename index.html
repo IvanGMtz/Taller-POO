@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 1 Basico POO</title>
+    <script src="main.js" defer></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+    <div class="container">
+        <div class="form">
+            <h2>Formulario de Registro</h2>
+            <select class="controls" name="tipo" id="tipo">
+                <option value="person">Persona</option>
+                <option value="student">Estudiante</option>
+            </select>
+            <input class="controls" type="text" name="name" id="name" placeholder="Nombre">
+            <input class="controls" type="text" name="age" id="age" placeholder="Edad">
+            <select class="controls" name="gender" id="gender">
+                <option value="hombre">Masculino</option>
+                <option value="mujer">Femenino</option>
+            </select>
+            <input class="controls" type="text" name="career" id="career" placeholder="Carrera" style="display: none;">
+            <div class="botones">
+                <input class="btn" type="submit" value="Saludar" id="saludar">
+                <input class="btn" type="submit" value="Estudiante" id="estudiante" style="display: none;">
+            </div>
+        </div>
+        <div class="display">
+            <div class="boxtext" id="text"></div>
+        </div>
+    </div>
+
+</body>
+</html>
