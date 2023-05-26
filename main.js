@@ -1,62 +1,46 @@
-class Persona {
+class Animal {
     name;
     age;
-    gender;
-    constructor({ name, age, gender }) {
+    constructor({ name, age}) {
         this.name = name;
         this.age = age;
-        this.gender = gender;
     }
-
-    saludar() {
-        return `Hola soy ${this.gender} me llamo ${this.name} y tengo ${this.age} años`
-    }
-
-    static esMayorDeEdad(p1) {
-        if (p1 > 17) {
-            return true
-        } else {
-            return false
-        }
+    hacerSonido() {
+        return `Hola me llamo ${this.name} y tengo ${this.age} meses, estoy chillando🔊`
     }
 }
 
-// let persona1 = new Persona ({name:"Ivan", age:23, gender:"Hombre"});
-// console.log(persona1.saludar());
-
-class Estudiante extends Persona {
-    career;
-    constructor({ name, age, gender, career }) {
-        super({ name, age, gender })
-        this.career = career;
+class perro extends Animal {
+    breed;
+    constructor({ name, age, breed }) {
+        super({ name, age})
+        this.breed = breed;
     }
-
-    estudiar() {
-        return `, estudio ${this.career}.`;
+    moverCola() {
+        return `, mi raza es ${this.breed} 🐕(mueve la cola).`;
     }
 }
-// let estudiante1 = new Estudiante({name:"Jesus", age:17, gender:"hombre", career:"ing.mecanica"});
-// console.log(estudiante1.saludar(), estudiante1.estudiar());
-// console.log(Persona.esMayorDeEdad(persona1.age));
-// console.log(Persona.esMayorDeEdad(estudiante1.age));
 
 document.addEventListener("change", (e) => {
     e.preventDefault();
     e.stopPropagation();
     const Tipo = document.getElementById("tipo");
-    const Carrera = document.getElementById("career");
-    const BtnEstudiante = document.getElementById("estudiante");
+    const Raza = document.getElementById("breed");
+    const Btnperro = document.getElementById("perro");
+    const BtnSaludar= document.getElementById("saludar");
 
     if (e.target.id == "tipo") {
-        if (Tipo.value == "person") {
-            Carrera.style.display = "none";
-            BtnEstudiante.style.display = "none";
-        } else if (Tipo.value == "student") {
-            Carrera.style.display = "block";
-            BtnEstudiante.style.display = "block";
+        if (Tipo.value == "animal") {
+            Raza.style.display = "none";
+            Btnperro.style.display = "none";
+            BtnSaludar.style.display = "block";
+        } else if (Tipo.value == "dog") {
+            Raza.style.display = "block";
+            Btnperro.style.display = "block";
+            BtnSaludar.style.display = "none";
         } else {
-            Carrera.style.display = "none";
-            BtnEstudiante.style.display = "none";
+            Raza.style.display = "none";
+            Btnperro.style.display = "none";
         }
     }
 });
@@ -64,14 +48,12 @@ document.addEventListener("change", (e) => {
 document.addEventListener("click", e => {
     let newName = document.getElementById("name").value;
     let newAge = document.getElementById("age").value;
-    let newGender = document.getElementById("gender").value;
-    let newCareer = document.getElementById("career").value;
+    let newBreed = document.getElementById("breed").value;
     if (e.target.id == "saludar") {
-        const newPersona = new Persona({ name: newName, age: newAge, gender: newGender });
-        document.getElementById("text").innerHTML = `${newPersona.saludar()} <br>`;
-        console.log(Persona.esMayorDeEdad(newPersona.age))
-    } else if (e.target.id == "estudiante") {
-        const newEstudiante = new Estudiante({ name: newName, age: newAge, gender: newGender, career: newCareer });
-        document.getElementById("text").innerHTML = `${newEstudiante.saludar() + newEstudiante.estudiar()} <br>`;
+        const newAnimal = new Animal({ name: newName, age: newAge});
+        document.getElementById("text").innerHTML = `${newAnimal.hacerSonido()}`;
+    } else if (e.target.id == "perro") {
+        const newperro = new perro({ name: newName, age: newAge, breed: newBreed });
+        document.getElementById("text").innerHTML = `${newperro.hacerSonido() + newperro.moverCola()}`;
     }
 })
