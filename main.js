@@ -1,23 +1,36 @@
-class Animal {
-    name;
-    age;
-    constructor({ name, age}) {
-        this.name = name;
-        this.age = age;
+class Figura {
+    color;
+    area;
+    constructor({ color, area}) {
+        this.color = color;
+        this.area = area;
     }
-    hacerSonido() {
-        return `Hola me llamo ${this.name} y tengo ${this.age} meses, estoy chillando🔊`
+    calcularArea() {
+        return `Tengo ${this.area} m^2 de area`
     }
 }
 
-class perro extends Animal {
-    breed;
-    constructor({ name, age, breed }) {
-        super({ name, age})
-        this.breed = breed;
+class Circulo extends Figura {
+    radio;
+    constructor({ color, radio }) {
+        super({ color})
+        this.radio = radio;
     }
-    moverCola() {
-        return `, mi raza es ${this.breed} 🐕(mueve la cola).`;
+    calcularArea() {
+        return `Tengo  ${((this.radio**2)*Math.PI).toFixed(2)} m^2 de area.`;
+    }
+}
+
+class Rectangulo extends Figura {
+    largo;
+    ancho
+    constructor({ color, largo, ancho }) {
+        super({color})
+        this.largo = largo;
+        this.ancho = ancho;
+    }
+    calcularArea() {
+        return `Tengo  ${(this.largo*this.ancho).toFixed(2)} m^2 de area.`;
     }
 }
 
@@ -25,35 +38,69 @@ document.addEventListener("change", (e) => {
     e.preventDefault();
     e.stopPropagation();
     const Tipo = document.getElementById("tipo");
-    const Raza = document.getElementById("breed");
-    const Btnperro = document.getElementById("perro");
-    const BtnSaludar= document.getElementById("saludar");
+    const Radio = document.getElementById("radio");
+    const Area = document.getElementById("area");
+    const Largo = document.getElementById("largo");
+    const Ancho = document.getElementById("ancho");
+    const BtnCirculo = document.getElementById("circulo");
+    const BtnFigura = document.getElementById("figura");
+    const BtnRectangulo = document.getElementById("rectangulo");
 
     if (e.target.id == "tipo") {
-        if (Tipo.value == "animal") {
-            Raza.style.display = "none";
-            Btnperro.style.display = "none";
-            BtnSaludar.style.display = "block";
-        } else if (Tipo.value == "dog") {
-            Raza.style.display = "block";
-            Btnperro.style.display = "block";
-            BtnSaludar.style.display = "none";
-        } else {
-            Raza.style.display = "none";
-            Btnperro.style.display = "none";
+        if (Tipo.value == "figura") {
+            Radio.style.display = "none";
+            Largo.style.display = "none";
+            Ancho.style.display = "none";
+            Area.style.display = "block";
+            BtnCirculo.style.display = "none";
+            BtnRectangulo.style.display = "none";
+            BtnFigura.style.display = "block";
+            
+        } else if (Tipo.value == "circulo") {
+            Radio.style.display = "block";
+            Area.style.display = "none";
+            Largo.style.display = "none";
+            Ancho.style.display = "none";
+            BtnCirculo.style.display = "block";
+            BtnFigura.style.display = "none";
+            BtnRectangulo.style.display = "none";
+            
+        } else if (Tipo.value == "rectangulo") {
+            Radio.style.display = "none";
+            Area.style.display = "none";
+            Largo.style.display = "block";
+            Ancho.style.display = "block";
+            BtnCirculo.style.display = "none";
+            BtnFigura.style.display = "none";
+            BtnRectangulo.style.display = "block";
+
+        }
+            else {
+            Radio.style.display = "none";
+            Area.style.display = "block";
+            Largo.style.display = "none";
+            Ancho.style.display = "none";
+            BtnCirculo.style.display = "none";
+            BtnRectangulo.style.display = "none";
+            
         }
     }
 });
 
 document.addEventListener("click", e => {
-    let newName = document.getElementById("name").value;
-    let newAge = document.getElementById("age").value;
-    let newBreed = document.getElementById("breed").value;
-    if (e.target.id == "saludar") {
-        const newAnimal = new Animal({ name: newName, age: newAge});
-        document.getElementById("text").innerHTML = `${newAnimal.hacerSonido()}`;
-    } else if (e.target.id == "perro") {
-        const newperro = new perro({ name: newName, age: newAge, breed: newBreed });
-        document.getElementById("text").innerHTML = `${newperro.hacerSonido() + newperro.moverCola()}`;
+    let newColor = document.getElementById("color").value;
+    let newArea = document.getElementById("area").value;
+    let newRadio = document.getElementById("radio").value;
+    let newLargo = document.getElementById("largo").value;
+    let newAncho = document.getElementById("ancho").value;
+    if (e.target.id == "figura") {
+        const newFigura = new Figura({ color: newColor, area: newArea});
+        document.getElementById("text").innerHTML = `${newFigura.calcularArea()}`;
+    } else if (e.target.id == "circulo") {
+        const newCirculo = new Circulo({ color: newColor, radio: newRadio});
+        document.getElementById("text").innerHTML = `${newCirculo.calcularArea()}`;
+    }else if (e.target.id == "rectangulo") {
+        const newRectangulo = new Rectangulo({ color: newColor, largo: newLargo, ancho: newAncho});
+        document.getElementById("text").innerHTML = `${newRectangulo.calcularArea()}`;
     }
 })

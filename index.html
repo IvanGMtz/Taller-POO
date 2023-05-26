@@ -4,24 +4,28 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ejercicio 2 Basico POO</title>
+    <title>Ejercicio 3 Basico POO</title>
     <script src="main.js" defer></script>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
         <div class="form">
-            <h2>Formulario de Registro de Animales</h2>
+            <h2>Calcular Area</h2>
             <select class="controls" name="tipo" id="tipo">
-                <option value="animal">Animal</option>
-                <option value="dog">Perro</option>
+                <option value="figura">Figura</option>
+                <option value="circulo">Circulo</option>
+                <option value="rectangulo">Rectangulo</option>
             </select>
-            <input class="controls" type="text" name="name" id="name" placeholder="Nombre">
-            <input class="controls" type="text" name="age" id="age" placeholder="Edad(meses)">
-            <input class="controls" type="text" name="breed" id="breed" placeholder="Raza" style="display: none;">
+            <input class="controls" type="text" name="color" id="color" placeholder="Color">
+            <input class="controls" type="text" name="area" id="area" placeholder="Area(m^2)" style="display: block;">
+            <input class="controls" type="text" name="radio" id="radio" placeholder="Radio (m)" style="display: none;">
+            <input class="controls" type="text" name="largo" id="largo" placeholder="Largo (m)" style="display: none;">
+            <input class="controls" type="text" name="ancho" id="ancho" placeholder="Ancho (m)" style="display: none;">
             <div class="botones">
-                <input class="btn" type="submit" value="Saludar" id="saludar" style="display: block;">
-                <input class="btn" type="submit" value="Saludar" id="perro" style="display: none;">
+                <input class="btn" type="submit" value="Calcular" id="figura" style="display: block;">
+                <input class="btn" type="submit" value="Calcular" id="circulo" style="display: none;">
+                <input class="btn" type="submit" value="Calcular" id="rectangulo" style="display: none;">
             </div>
         </div>
         <div class="display"><div class="boxtext" id="text"></div></div>
