@@ -4,25 +4,23 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ejercicio 4 Basico POO</title>
+    <title>Ejercicio 5 Basico POO</title>
     <script src="main.js" defer></script>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
         <div class="form">
-            <h2>Datos del Vehiculo</h2>
+            <h2>Formulario</h2>
             <select class="controls" name="tipo" id="tipo">
-                <option value="vehiculo">Vehiculo</option>
-                <option value="coche">Coche</option>
+                <option value="empleado">Empleado</option>
+                <option value="gerente">Gerente</option>
             </select>
-            <input class="controls" type="text" name="marca" id="marca" placeholder="Marca">
-            <input class="controls" type="text" name="modelo" id="modelo" placeholder="Modelo">
-            <input class="controls" type="text" name="velocidad" id="velocidad" placeholder="Velocidad [km/h]">
-            <input class="controls" type="text" name="combustible" id="combustible" placeholder="Combustible" style="display: none;">
+            <input class="controls" type="text" name="nombre" id="nombre" placeholder="Nombre">
+            <input class="controls" type="text" name="edad" id="edad" placeholder="Edad">
+            <input class="controls" type="text" name="sueldo" id="sueldo" placeholder="$ Salario">
             <div class="botones">
-                <input class="btn" type="submit" value="Acelerar" id="acelerar" style="display: block;">
-                <input class="btn" type="submit" value="Convertir km/h a Mph" id="convertir" style="display: none;">
+                <input class="btn" type="submit" value="Salario Anual" id="calcular">
             </div>
         </div>
         <div class="display"><div class="boxtext" id="text"></div></div>
