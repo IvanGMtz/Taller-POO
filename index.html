@@ -4,28 +4,25 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ejercicio 3 Basico POO</title>
+    <title>Ejercicio 4 Basico POO</title>
     <script src="main.js" defer></script>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
         <div class="form">
-            <h2>Calcular Area</h2>
+            <h2>Datos del Vehiculo</h2>
             <select class="controls" name="tipo" id="tipo">
-                <option value="figura">Figura</option>
-                <option value="circulo">Circulo</option>
-                <option value="rectangulo">Rectangulo</option>
+                <option value="vehiculo">Vehiculo</option>
+                <option value="coche">Coche</option>
             </select>
-            <input class="controls" type="text" name="color" id="color" placeholder="Color">
-            <input class="controls" type="text" name="area" id="area" placeholder="Area(m^2)" style="display: block;">
-            <input class="controls" type="text" name="radio" id="radio" placeholder="Radio (m)" style="display: none;">
-            <input class="controls" type="text" name="largo" id="largo" placeholder="Largo (m)" style="display: none;">
-            <input class="controls" type="text" name="ancho" id="ancho" placeholder="Ancho (m)" style="display: none;">
+            <input class="controls" type="text" name="marca" id="marca" placeholder="Marca">
+            <input class="controls" type="text" name="modelo" id="modelo" placeholder="Modelo">
+            <input class="controls" type="text" name="velocidad" id="velocidad" placeholder="Velocidad [km/h]">
+            <input class="controls" type="text" name="combustible" id="combustible" placeholder="Combustible" style="display: none;">
             <div class="botones">
-                <input class="btn" type="submit" value="Calcular" id="figura" style="display: block;">
-                <input class="btn" type="submit" value="Calcular" id="circulo" style="display: none;">
-                <input class="btn" type="submit" value="Calcular" id="rectangulo" style="display: none;">
+                <input class="btn" type="submit" value="Acelerar" id="acelerar" style="display: block;">
+                <input class="btn" type="submit" value="Convertir km/h a Mph" id="convertir" style="display: none;">
             </div>
         </div>
         <div class="display"><div class="boxtext" id="text"></div></div>

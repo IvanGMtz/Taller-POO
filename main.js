@@ -1,106 +1,73 @@
-class Figura {
-    color;
-    area;
-    constructor({ color, area}) {
-        this.color = color;
-        this.area = area;
+class Vehiculo {
+    marca;
+    modelo;
+    velocidad;
+    constructor({ marca, modelo, velocidad}) {
+        this.marca = marca;
+        this.modelo = modelo;
+        this.velocidad = velocidad;
     }
-    calcularArea() {
-        return `Tengo ${this.area} m^2 de area`
-    }
-}
-
-class Circulo extends Figura {
-    radio;
-    constructor({ color, radio }) {
-        super({ color})
-        this.radio = radio;
-    }
-    calcularArea() {
-        return `Tengo  ${((this.radio**2)*Math.PI).toFixed(2)} m^2 de area.`;
+    acelerar() {
+        return `Velocidad = ${this.velocidad*10} [km/h]🚗💨`
     }
 }
 
-class Rectangulo extends Figura {
-    largo;
-    ancho
-    constructor({ color, largo, ancho }) {
-        super({color})
-        this.largo = largo;
-        this.ancho = ancho;
+class Coche extends Vehiculo {
+    combustible;
+    constructor({ marca, modelo, velocidad }) {
+        super({marca, modelo, velocidad})
+        this.combustible = combustible;
     }
-    calcularArea() {
-        return `Tengo  ${(this.largo*this.ancho).toFixed(2)} m^2 de area.`;
+    acelerar() {
+        return `Velocidad = ${this.velocidad*20} [km/h]🚗💨`
+    }
+
+    static convertirKmHEnMph(p1){
+        return `Velocidad = ${(p1/1.60934).toFixed(2)} [Mph]`;
     }
 }
+
+const Tipo = document.getElementById("tipo");
 
 document.addEventListener("change", (e) => {
     e.preventDefault();
     e.stopPropagation();
-    const Tipo = document.getElementById("tipo");
-    const Radio = document.getElementById("radio");
-    const Area = document.getElementById("area");
-    const Largo = document.getElementById("largo");
-    const Ancho = document.getElementById("ancho");
-    const BtnCirculo = document.getElementById("circulo");
-    const BtnFigura = document.getElementById("figura");
-    const BtnRectangulo = document.getElementById("rectangulo");
+    
+    const Combustible = document.getElementById("combustible");
+    const BtnConvertir = document.getElementById("convertir");
 
     if (e.target.id == "tipo") {
-        if (Tipo.value == "figura") {
-            Radio.style.display = "none";
-            Largo.style.display = "none";
-            Ancho.style.display = "none";
-            Area.style.display = "block";
-            BtnCirculo.style.display = "none";
-            BtnRectangulo.style.display = "none";
-            BtnFigura.style.display = "block";
+        if (Tipo.value == "vehiculo") {
+            Combustible.style.display = "none";
+            BtnConvertir.style.display = "none";
             
-        } else if (Tipo.value == "circulo") {
-            Radio.style.display = "block";
-            Area.style.display = "none";
-            Largo.style.display = "none";
-            Ancho.style.display = "none";
-            BtnCirculo.style.display = "block";
-            BtnFigura.style.display = "none";
-            BtnRectangulo.style.display = "none";
+        } else if (Tipo.value == "coche") {
+            Combustible.style.display = "block";
+            BtnConvertir.style.display = "block";
             
-        } else if (Tipo.value == "rectangulo") {
-            Radio.style.display = "none";
-            Area.style.display = "none";
-            Largo.style.display = "block";
-            Ancho.style.display = "block";
-            BtnCirculo.style.display = "none";
-            BtnFigura.style.display = "none";
-            BtnRectangulo.style.display = "block";
-
-        }
-            else {
-            Radio.style.display = "none";
-            Area.style.display = "block";
-            Largo.style.display = "none";
-            Ancho.style.display = "none";
-            BtnCirculo.style.display = "none";
-            BtnRectangulo.style.display = "none";
-            
+        } else {
+            Combustible.style.display = "none";
+            BtnConvertir.style.display = "none";         
         }
     }
 });
 
 document.addEventListener("click", e => {
-    let newColor = document.getElementById("color").value;
-    let newArea = document.getElementById("area").value;
-    let newRadio = document.getElementById("radio").value;
-    let newLargo = document.getElementById("largo").value;
-    let newAncho = document.getElementById("ancho").value;
-    if (e.target.id == "figura") {
-        const newFigura = new Figura({ color: newColor, area: newArea});
-        document.getElementById("text").innerHTML = `${newFigura.calcularArea()}`;
-    } else if (e.target.id == "circulo") {
-        const newCirculo = new Circulo({ color: newColor, radio: newRadio});
-        document.getElementById("text").innerHTML = `${newCirculo.calcularArea()}`;
-    }else if (e.target.id == "rectangulo") {
-        const newRectangulo = new Rectangulo({ color: newColor, largo: newLargo, ancho: newAncho});
-        document.getElementById("text").innerHTML = `${newRectangulo.calcularArea()}`;
+    let newMarca = document.getElementById("marca").value;
+    let newModelo = document.getElementById("modelo").value;
+    let newVelocidad = document.getElementById("velocidad").value;
+    let newCombustible = document.getElementById("combustible").value;
+    if (e.target.id == "acelerar") {
+        if(Tipo.value == "vehiculo"){
+            const newVehiculo = new Vehiculo({ marca: newMarca, modelo: newModelo, velocidad: newVelocidad});
+            document.getElementById("text").innerHTML = `${newVehiculo.acelerar()}`;
+        } else if (Tipo.value == "coche"){
+            const newCoche = new Coche({ marca: newMarca, modelo: newModelo, velocidad: newVelocidad, combustible: newCombustible});
+            document.getElementById("text").innerHTML = `${newCoche.acelerar()}`;
+        }
+        
+    } else if (e.target.id == "convertir") {
+        const newCoche = new Coche({ marca: newMarca, modelo: newModelo, velocidad: newVelocidad, combustible: newCombustible});
+        document.getElementById("text").innerHTML = `${Coche.convertirKmHEnMph(newCoche.velocidad)}`;
     }
 })
